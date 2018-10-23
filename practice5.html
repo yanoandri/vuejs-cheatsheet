@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Udemy Vue JS</title>
+    <script src="/node_modules/vue/dist/vue.min.js"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <div id="exercise">
+        <!-- 1) Hook up the button to toggle the display of the two paragraphs. Use both v-if and v-show and inspect the elements to see the difference -->
+        <div>
+            <button @click="flag = !flag">Toggle</button>
+            <p v-if="flag">You either see me ...</p>
+            <p v-else>...or me</p>
+            <p v-show="flag">You either see me ...</p>
+            <p v-show="!flag">...or me</p>
+        </div>
+        <!-- 2) Output an <ul> of array elements of your choice. Also print the index of each element. -->
+        <ul>
+            <li v-for="(animal, i) in animals">{{ animal }} ({{ i }})</li>
+        </ul>
+        <!-- 3) Print all key-value pairs of the following object: {title: 'Lord of the Rings', author: 'J.R.R. Tolkiens', books: '3'}. Also print the index of each item. -->
+        <ul>
+            <li v-for="(value, key, j) in book">{{ key }} : {{ value }} ({{ j }})</li>
+        </ul>
+        <!-- 4) Print the following object (only the values) and also create a nested loop for the array: {name: 'TESTOBJECT', data: [1.67, 1.33, 0.98, 2.21]} (hint: use v-for and v-if to achieve this) -->
+        <ul>
+            <li v-for="(object, index) in array">
+                <div v-if="index === 'name' ">{{ object }}</div>
+                <div v-else>
+                    <ul>
+                        <li v-for="item in object">{{ item }}</li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var exercise = new Vue({
+            el: '#exercise',
+            data: {
+                flag: true,
+                animals: ["cat", "mouse", "dog", "pig", "chicken"],
+                book : {title: 'Lord of the Rings', author: 'J.R.R. Tolkiens', books: '3'},
+                array: {name: 'TESTOBJECT', data: [1.67, 1.33, 0.98, 2.21]},
+            }
+        });
+    </script>
+</body>
+
+</html>
